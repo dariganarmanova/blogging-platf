@@ -10,6 +10,8 @@ const LogPage = () => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8000/log', { email, password })
+            const token = response.data.token
+            localStorage.setItem("token", token)
             if (response.data) {
                 navigate('/blogs')
             }

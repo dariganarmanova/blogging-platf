@@ -43,13 +43,6 @@ const BlogCreate = () => {
                 />
                 <button>Submit</button>
             </form>
-            <ul>
-                {display.map((disp) => (
-                    <li key={disp.id}>
-                        <span>{disp.text}</span>
-                    </li>
-                ))}
-            </ul>
         </div>
     )
 }

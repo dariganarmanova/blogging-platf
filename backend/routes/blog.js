@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const pool = require('../db')
+const verifyToken = require('../middleware/jwtAuth')
 
 app.use(cors())
 app.use(express.json())
