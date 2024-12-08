@@ -15,7 +15,7 @@ const SignUp = () => {
             const token = response.data.token
             localStorage.setItem("token", token)
             if (response.data) {
-                alert("User successfully logged in")
+                alert("User successfully signed up")
                 navigate('/blogs')
             }
         } catch (error) {

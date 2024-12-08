@@ -8,8 +8,13 @@ const BlogCreate = () => {
 
     useEffect(() => {
         const fetchBlogs = async () => {
+            const token = localStorage.getItem("token")
             try {
-                const response = await axios.get('http://localhost:8000/blog')
+                const response = await axios.get('http://localhost:8000/blog', {
+                    headers: {
+                        Authorization: `Bearer: ${token}`
+                    }
+                })
                 setDisplay(response.data)
             } catch (error) {
                 console.error("Error fetching the data", error)
@@ -20,14 +25,20 @@ const BlogCreate = () => {
 
     const addBlog = async (e) => {
         e.preventDefault();
+        const token = localStorage.getItem("token")
         try {
-            const response = await axios.post('http://localhost:8000/blog', { blogText })
+            const response = await axios.post('http://localhost:8000/blog', { blogText }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             if (response.data) {
                 setDisplay(response.data)
                 setBlogText('')
+                alert("Blog successfuly created!")
             }
         } catch (error) {
-            throw new Error("Failed to add the resource", error.message)
+            console.error("Failed to add the resource", error)
         }
     }
     return (
